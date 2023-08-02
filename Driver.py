@@ -38,6 +38,106 @@ def get_Speed() -> int:
 
     return speed
 
+def get_hot_plate_temperature() -> int:
+    weightMixer.write(bytes('IN_PV_2 \r \n', 'utf-8'))
+
+    getData = weightMixer.readline()
+    data = getData.decode('utf-8').rstrip()
+    print(data)
+    speed = data[0:data.find(" ")]
+
+    return speed
+
+def get_hot_plate_temperature_set_point() -> int:
+    weightMixer.write(bytes('IN_SP_2 \r \n', 'utf-8'))
+
+    getData = weightMixer.readline()
+    data = getData.decode('utf-8').rstrip()
+    print(data)
+    speed = data[0:data.find(" ")]
+
+    return speed
+
+def get_hot_plate_safety_temperature() -> int:
+    weightMixer.write(bytes('IN_PV_3 \r \n', 'utf-8'))
+
+    getData = weightMixer.readline()
+    data = getData.decode('utf-8').rstrip()
+    print(data)
+    speed = data[0:data.find(" ")]
+
+    return speed
+
+def get_hot_plate_safety_temperature_set_point() -> int:
+    weightMixer.write(bytes('IN_SP_3 \r \n', 'utf-8'))
+
+    getData = weightMixer.readline()
+    data = getData.decode('utf-8').rstrip()
+    print(data)
+    speed = data[0:data.find(" ")]
+
+    return speed
+
+def get_heat_transfer_medium_temperature() -> int:
+    weightMixer.write(bytes('IN_PV_7 \r \n', 'utf-8'))
+
+    getData = weightMixer.readline()
+    data = getData.decode('utf-8').rstrip()
+    print(data)
+    speed = data[0:data.find(" ")]
+
+    return speed
+
+def get_heat_transfer_medium_temperature_set_point() -> int:
+    weightMixer.write(bytes('IN_SP_7 \r \n', 'utf-8'))
+
+    getData = weightMixer.readline()
+    data = getData.decode('utf-8').rstrip()
+    print(data)
+    speed = data[0:data.find(" ")]
+
+    return speed
+
+def get_external_sensor_temperature() -> int:
+    weightMixer.write(bytes('IN_PV_1 \r \n', 'utf-8'))
+
+    getData = weightMixer.readline()
+    data = getData.decode('utf-8').rstrip()
+    print(data)
+    speed = data[0:data.find(" ")]
+
+    return speed
+
+def get_external_sensor_temperature_set_point() -> int:
+    weightMixer.write(bytes('IN_SP_1 \r \n', 'utf-8'))
+
+    getData = weightMixer.readline()
+    data = getData.decode('utf-8').rstrip()
+    print(data)
+    speed = data[0:data.find(" ")]
+
+    return speed
+
+
+def set_hot_plate_temperature(temperature: int) -> int:
+    weightMixer.write(bytes('OUT_SP_2 ' + str(temperature) + ' \r \n', 'utf-8'))
+    print('Setting hot plate temperature to ' + str(temperature))
+
+    return 0
+
+
+def set_heat_transfer_medium_temperature(temperature: int) -> int:
+    weightMixer.write(bytes('OUT_SP_7 ' + str(temperature) + ' \r \n', 'utf-8'))
+    print('Setting heat transfer medium temperature to ' + str(temperature))
+
+    return 0
+
+def set_external_sensor_temperature(temperature: int) -> int:
+    weightMixer.write(bytes('OUT_SP_1 ' + str(temperature) + ' \r \n', 'utf-8'))
+    print('Setting external sensor temperature to ' + str(temperature))
+
+    return 0
+
 
 def get_Speed_Set_Point() -> int:
     weightMixer.write(bytes('IN_SP_4 \r \n', 'utf-8'))
@@ -71,6 +171,19 @@ def start_Mixer() -> int:
 def stop_Mixer() -> int:
     weightMixer.write(bytes('STOP_4 \r \n', 'utf-8'))
     print('Stopping Mixer')
+
+    return 0
+
+def start_hot_plate() -> int:
+    weightMixer.write(bytes('START_2 \r \n', 'utf-8'))
+    print('Starting Hot plate')
+
+    return 0
+
+
+def stop_hot_plate() -> int:
+    weightMixer.write(bytes('STOP_2 \r \n', 'utf-8'))
+    print('Stopping Hot plate')
 
     return 0
 
