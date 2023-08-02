@@ -55,3 +55,4 @@ def get_weight_value():
 @app.get("/get_weight_status")
 def get_weight_status():
     return {"weight_status": get_Weight_Status()}
+
